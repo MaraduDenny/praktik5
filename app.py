@@ -5,6 +5,7 @@ from flask_session import Session
 app = Flask(__name__)
 app.secret_key = 'rahasia123'
 app.config['SESSION_TYPE'] = 'filesystem'
+
 Session(app)
 bcrypt = Bcrypt(app)
 
@@ -40,6 +41,3 @@ def dashboard():
     if 'user' in session:
         return render_template('dashboard.html', user=session['user'])
     return redirect('/')
-
-if __name__ == '__main__':
-    app.run(debug=True)
